@@ -12,12 +12,15 @@ type UserType = {
 
 const useLogin = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const { setLoginUser, setIsLogined, setToken } = useLoginUserContext();
+  const { setLoginUser, setIsLogined, setToken, setLoading } =
+    useLoginUserContext();
   const router = useRouter();
+
   const login = (user: UserType) => {
     const endpoint = `${API_URL}/auth/`;
     // const endpoint = `/auth/`;
     const queries = { username: user.username, password: user.password };
+    setLoading(true);
     axios
       .post(endpoint, queries)
       .then((res) => {
@@ -37,6 +40,9 @@ const useLogin = () => {
       .catch((e) => {
         setLoginUser("");
         router.push("/auth/login/loginfailed");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   return { login };

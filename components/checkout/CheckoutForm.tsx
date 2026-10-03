@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const CheckoutForm = ({ id }: { id: string }) => {
   const [loading, setLoading] = useState(false);
   const [currency, setCurrency] = useState("USD"); // Default currency
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("example@email.com");
   const router = useRouter();
   const hardcodedAmount = 50000000;
 

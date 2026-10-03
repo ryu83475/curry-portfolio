@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import useLogin from "../hooks/useLogin";
 import Link from "next/link";
+import { useLoginUserContext } from "../provider/LoginUserProvider";
 
 const Login = () => {
   const { login } = useLogin();
   const [user, setUser] = useState({ username: "", password: "" });
+  const { loading } = useLoginUserContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -48,12 +50,22 @@ const Login = () => {
           </div>
         </div>
         <div className="flex flex-col gap-2 w-full">
-          <button
-            className="bg-orange-500 hover:bg-orange-600 text-white w-full h-10 rounded"
-            onClick={handleClickLogin}
-          >
-            ログイン
-          </button>
+          {loading ? (
+            <button
+              className="bg-orange-600 text-white w-full h-10 rounded"
+              onClick={handleClickLogin}
+              disabled={true}
+            >
+              ログイン中…
+            </button>
+          ) : (
+            <button
+              className="bg-orange-500 hover:bg-orange-600 text-white w-full h-10 rounded"
+              onClick={handleClickLogin}
+            >
+              ログイン
+            </button>
+          )}
           <Link
             className="bg-orange-800 hover:bg-orange-900 text-white w-full h-10 rounded py-2"
             href="/auth/register"

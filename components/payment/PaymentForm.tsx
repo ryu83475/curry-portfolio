@@ -44,7 +44,7 @@ const PaymentForm = () => {
       </div>
       <div className="border rounded rounded-2xl border-orange-300 px-4 py-8 flex flex-col">
         <h1 className="text-orange-900 text-lg font-bold py-4">注文内容</h1>
-        <ul className="py-4">
+        <ul className="flex flex-col gap-2 py-4">
           {examples.map((example) => (
             <li key={example.id}>
               <div className="flex [&_p]:text-orange-900">
@@ -54,6 +54,53 @@ const PaymentForm = () => {
               </div>
             </li>
           ))}
+          <li>
+            <div className="flex [&_p]:text-orange-900 items-center">
+              <p className="w-60">カード番号をコピー</p>
+              <button
+                onClick={() => {
+                  const sampleCardNumber = "4242424242424242";
+                  navigator.clipboard.writeText(sampleCardNumber);
+                }}
+                className="bg-blue-500 hover:bg-blue-600 rounded text-white p-1"
+              >
+                コピー
+              </button>
+            </div>
+          </li>
+          <li>
+            <div className="flex [&_p]:text-orange-900 items-center">
+              <p className="w-60">有効期限をコピー</p>
+              <button
+                onClick={() => {
+                  const sampleCardNumber = "1234";
+                  navigator.clipboard.writeText(sampleCardNumber);
+                }}
+                className="bg-blue-500 hover:bg-blue-600 rounded text-white p-1"
+              >
+                コピー
+              </button>
+            </div>
+          </li>
+          <li>
+            <div className="flex [&_p]:text-orange-900 items-center">
+              <p className="w-60">セキュリティーコードをコピー</p>
+              <button
+                onClick={() => {
+                  const sampleCardNumber = "123";
+                  navigator.clipboard.writeText(sampleCardNumber);
+                }}
+                className="bg-blue-500 hover:bg-blue-600 rounded text-white p-1"
+              >
+                コピー
+              </button>
+            </div>
+          </li>
+          <li>
+            <div className="flex [&_p]:text-orange-900 items-center">
+              <p className="w-60">オプションは入力不要です</p>
+            </div>
+          </li>
         </ul>
         <hr className="border-orange-300 my-4" />
         <ul className="[&_p]:text-orange-900">

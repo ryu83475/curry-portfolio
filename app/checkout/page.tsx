@@ -9,7 +9,6 @@ const page = async ({
   searchParams: Promise<{ product?: string }>;
 }) => {
   const { product } = await searchParams;
-  console.log("product:", product);
 
   if (!product) {
     return (
