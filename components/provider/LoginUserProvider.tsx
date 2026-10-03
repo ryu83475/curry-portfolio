@@ -39,7 +39,7 @@ export const LoginUserProvider = (props: Props) => {
   const { children } = props;
   const [isLogined, setIsLogined] = useState(false);
   const [loginUser, setLoginUser] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(Cookies.get("token"));
 
   useEffect(() => {
